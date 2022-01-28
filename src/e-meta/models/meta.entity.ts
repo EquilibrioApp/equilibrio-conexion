@@ -2,11 +2,11 @@ import { Column, Entity, PrimaryGeneratedColumn, OneToOne, JoinColumn} from "typ
 
 @Entity('meta')
 export class MetaPostEntity{
-    @PrimaryGeneratedColumn()//'uuid'
-    id_meta: number;
+    @PrimaryGeneratedColumn('uuid')//'uuid'
+    id_meta: string;
 
     @Column({default: ''})
-    peso_meta: number;
+    peso_meta: string;
 
     @Column({type: 'timestamp', default: () => 'CURRENT_TIMESTAMP'})
     fecha: Date;

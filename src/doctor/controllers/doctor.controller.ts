@@ -1,11 +1,6 @@
 import { Controller, Get, Post, Param, Body } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
-import { Observable } from 'rxjs';
-import { PatientDto } from 'src/patient/dto/patient.dto';
 
-import { DoctorDto, FindDcotorByIdResponseDto } from '../dto/doctor.dto';
-import { DoctorPostEntity } from '../models/doctor.entity';
-import { DoctorPost } from '../models/doctor.interface';
+import { DoctorDto } from '../dto/doctor.dto';
 import { DoctorService } from '../services/doctor.service';
 
 @Controller('doctor')
@@ -13,7 +8,7 @@ export class DoctorController {
   constructor(private doctorService: DoctorService) {}
 
   @Post('/create') //Se crea un nuevo especialista
-  createDoctor(@Body() doctorPost: DoctorDto): Promise<DoctorPost> {
+  createDoctor(@Body() doctorPost: DoctorDto): Promise<DoctorDto> {
     console.log(doctorPost);
     return this.doctorService.createDoctor(doctorPost);
   }

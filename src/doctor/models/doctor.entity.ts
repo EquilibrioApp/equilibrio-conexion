@@ -2,7 +2,7 @@ import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity('especialista')
 export class DoctorPostEntity{
-    @PrimaryGeneratedColumn()//'uuid'
+    @PrimaryGeneratedColumn('uuid')//
     id_especialista: string;
 
     @Column({default: ''})

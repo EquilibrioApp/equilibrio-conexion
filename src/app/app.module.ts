@@ -5,6 +5,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { LoginController } from '../login/login.controller';
 import { DoctorModule } from '../doctor/doctor.module';
 import { PatientModule } from 'src/patient/patient.module';
+import { EMetaModule } from 'src/e-meta/e-meta.module';
 
 @Module({
   //Rutas de la application
@@ -23,7 +24,7 @@ import { PatientModule } from 'src/patient/patient.module';
       retryAttempts: 5,
       //dropSchema: true
     }),
-    DoctorModule, PatientModule
+    DoctorModule, PatientModule, EMetaModule
   ],
   controllers: [LoginController]
 })

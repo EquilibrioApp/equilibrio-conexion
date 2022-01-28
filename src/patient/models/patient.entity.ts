@@ -1,9 +1,8 @@
 import { Column, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
-import { DoctorPostEntity } from "../../doctor/models/doctor.entity";
 
 @Entity('paciente')
 export class PatientEntity{
-    @PrimaryGeneratedColumn()//'uuid'
+    @PrimaryGeneratedColumn('uuid')//
     id_paciente: string;
 
     @Column({default: ''})
@@ -29,6 +28,4 @@ export class PatientEntity{
 
     @Column({default: ''})
     password: string;
-
-    
 }

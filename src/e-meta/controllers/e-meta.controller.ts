@@ -9,7 +9,7 @@ export class EMetaController {
     constructor(private eMetaService:EMetaService){}
 
     @Post('/create')
-    creteMera(@Body() meta: MetaDto): Promise<MetaResponseDto>{
+    creteMera(@Body() meta: MetaDto): Promise<MetaDto>{
         return this.eMetaService.createMeta(meta);
     }
 
