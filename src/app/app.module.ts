@@ -12,6 +12,7 @@ import { EPesoModule } from 'src/e-peso/e-peso.module';
 import { EIndicesModule } from 'src/e-indices/e-indices.module';
 import { ECircunferenciasModule } from 'src/e-circunferencias/e-circunferencias.module';
 import { EAvancesModule } from 'src/e-avances/e-avances.module';
+import { AgendaModule } from 'src/agenda/agenda.module';
 
 @Module({
   //Rutas de la application
@@ -30,7 +31,7 @@ import { EAvancesModule } from 'src/e-avances/e-avances.module';
       retryAttempts: 5,
       //dropSchema: true
     }),
-    DoctorModule, PatientModule, EMetaModule, ExpedienteModule, EPlieguesModule, EPesoModule, EIndicesModule, ECircunferenciasModule, EAvancesModule
+    DoctorModule, PatientModule, EMetaModule, ExpedienteModule, EPlieguesModule, EPesoModule, EIndicesModule, ECircunferenciasModule, EAvancesModule, AgendaModule
   ],
   controllers: [LoginController]
 })
