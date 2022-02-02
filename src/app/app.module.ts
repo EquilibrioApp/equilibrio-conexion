@@ -5,13 +5,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { LoginController } from '../login/login.controller';
 import { DoctorModule } from '../doctor/doctor.module';
 import { PatientModule } from 'src/patient/patient.module';
-import { EMetaModule } from 'src/e-meta/e-meta.module';
 import { ExpedienteModule } from 'src/expediente/expediente.module';
-import { EPlieguesModule } from 'src/e-pliegues/e-pliegues.module';
-import { EPesoModule } from 'src/e-peso/e-peso.module';
-import { EIndicesModule } from 'src/e-indices/e-indices.module';
-import { ECircunferenciasModule } from 'src/e-circunferencias/e-circunferencias.module';
-import { EAvancesModule } from 'src/e-avances/e-avances.module';
 
 @Module({
   //Rutas de la application
@@ -30,7 +24,7 @@ import { EAvancesModule } from 'src/e-avances/e-avances.module';
       retryAttempts: 5,
       //dropSchema: true
     }),
-    DoctorModule, PatientModule, EMetaModule, ExpedienteModule, EPlieguesModule, EPesoModule, EIndicesModule, ECircunferenciasModule, EAvancesModule
+    DoctorModule, PatientModule, ExpedienteModule
   ],
   controllers: [LoginController]
 })

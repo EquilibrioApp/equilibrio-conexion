@@ -1,4 +1,5 @@
 import { Column, Entity, PrimaryGeneratedColumn, OneToOne, JoinColumn} from "typeorm";
+import { AvancePostEntity } from "./avances.entity";
 
 @Entity('pliegues')
 export class PlieguesPostEntity{
@@ -32,8 +33,9 @@ export class PlieguesPostEntity{
     @Column("decimal", { precision: 5, scale: 2 })
     midaxilar: number;
 
-    @Column({default:""})
-    id_avance: string;
+    @OneToOne(()=>AvancePostEntity)
+    @JoinColumn()
+    id_avance: AvancePostEntity	;
 }
 
 /*id_pliegues serial primary key, 

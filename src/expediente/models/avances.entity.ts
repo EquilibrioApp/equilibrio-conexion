@@ -1,5 +1,8 @@
-import { Column, Entity, PrimaryGeneratedColumn, OneToOne, JoinColumn} from "typeorm";
+import { Column, Entity, PrimaryGeneratedColumn, OneToOne, JoinColumn, ManyToMany, ManyToOne} from "typeorm";
+import { ExpedientePostEntity } from './expediente.entity'
 
+
+ //TODO Relacion 1>M
 @Entity('avance')
 export class AvancePostEntity{
     @PrimaryGeneratedColumn('uuid')//'uuid'
@@ -11,8 +14,8 @@ export class AvancePostEntity{
     @Column("text")
     observacion: string;
 
-    @Column({default:""})
-    id_expediente: string;
+    @ManyToOne(() => ExpedientePostEntity, expediente => expediente.avances)
+    id_expediente: ExpedientePostEntity;
 }
 /*
  id_avance serial primary key, 

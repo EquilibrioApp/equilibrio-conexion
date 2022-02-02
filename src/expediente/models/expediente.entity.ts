@@ -1,4 +1,6 @@
-import { Column, Entity, PrimaryGeneratedColumn, OneToOne, JoinColumn} from "typeorm";
+import { Column, Entity, PrimaryGeneratedColumn, OneToOne, JoinColumn, OneToMany} from "typeorm";
+import { AvancePostEntity } from "./avances.entity";
+import { MetaPostEntity } from "./meta.entity";
 
 @Entity('expediente')
 export class ExpedientePostEntity{
@@ -11,11 +13,15 @@ export class ExpedientePostEntity{
     @Column({default : ""})
     id_paciente: string;
     
-    @Column({default : ""})
-    id_meta: string;
+    @OneToOne(() => MetaPostEntity)
+    @JoinColumn()
+    id_meta: MetaPostEntity;
     
     @Column("decimal", { precision: 5, scale: 2 })
     altura_paciente: number;
+
+    @OneToMany(()=> AvancePostEntity, avance => avance.id_expediente)
+    avances:AvancePostEntity[];
 }
 
 /*create table expediente (

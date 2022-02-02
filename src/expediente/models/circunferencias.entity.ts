@@ -1,4 +1,5 @@
 import { Column, Entity, PrimaryGeneratedColumn, OneToOne, JoinColumn} from "typeorm";
+import { AvancePostEntity } from "./avances.entity";
 
 @Entity('circunferencia')
 export class CircunferenciasPostEntity{
@@ -17,8 +18,9 @@ export class CircunferenciasPostEntity{
     @Column("decimal", { precision: 5, scale: 2 })
     pierna: number;
 
-    @Column( { default:"" })
-    id_avance: string;
+    @OneToOne(()=>AvancePostEntity)
+    @JoinColumn()
+    id_avance: AvancePostEntity;
 }
 /*id_circunferencia serial primary key,
  cadera float, 
