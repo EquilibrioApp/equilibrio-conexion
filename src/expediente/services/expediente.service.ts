@@ -124,3 +124,4 @@ export class ExpedienteService {
         return this.expedienteRepo.save(newExpediente);
     }*/
 }
+ 

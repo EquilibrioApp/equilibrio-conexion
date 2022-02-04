@@ -5,6 +5,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { LoginController } from '../login/login.controller';
 import { DoctorModule } from '../doctor/doctor.module';
 import { PatientModule } from 'src/patient/patient.module';
+import { AgendaModule } from 'src/agenda/agenda.module';
 import { ExpedienteModule } from 'src/expediente/expediente.module';
 
 @Module({
@@ -24,7 +25,7 @@ import { ExpedienteModule } from 'src/expediente/expediente.module';
       retryAttempts: 5,
       //dropSchema: true
     }),
-    DoctorModule, PatientModule, ExpedienteModule
+    DoctorModule, PatientModule, AgendaModule, ExpedienteModule,
   ],
   controllers: [LoginController]
 })
