@@ -1,5 +1,5 @@
 export class AgendaDto {
-  id?: string;
+  id_agenda?: string;
   idPaciente: string;
   idEspecialista: string;
   iCalUID : string;
@@ -9,5 +9,5 @@ export class AgendaDto {
 }
 
 export class AgendaResponseDto{
-  id: string;
+  id_agenda: string;
 }

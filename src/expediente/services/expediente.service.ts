@@ -23,15 +23,10 @@ export class ExpedienteService {
     ){}
 
     findAll(){
-        return this.expedienteRepo.find(), 
-               this.metaRepo.find(),
-               this.avanceRepo.find(),
-               this.pesoRepo.find(),
-               this.circunferenciaRepo.find({}),
-               this.plieguesRepo.find({});
+        return this.expedienteRepo.find();
     }
     
-   async createNewExpe(body:any) {
+    async createNewExpe(body:any) {
         //Meta
         const meta = new MetaPostEntity();
             meta.peso_meta = body.peso_meta;
@@ -116,6 +111,12 @@ export class ExpedienteService {
             pliegues.id_avance = newAvance;
 
         return this.plieguesRepo.save(pliegues), this.circunferenciaRepo.save(circunferencia), this.pesoRepo.save(peso);
+    }
+
+    async removeExpediente(id_expediente:string, id_avance:string){
+        await this.expedienteRepo.delete(id_expediente);
+        await this.avanceRepo.delete(id_expediente);
+        return true;
     }
 
     /*createExpediente( expediente : ExpedienteDto):Promise<ExpedienteResponseDto>{

@@ -3,7 +3,7 @@ import { Column, Entity, PrimaryGeneratedColumn, OneToOne, JoinColumn} from "typ
 @Entity('agenda')
 export class AgendaPostEntity{
     @PrimaryGeneratedColumn('uuid')//'uuid'
-    id: string;
+    id_agenda: string;
     
     @Column({default:""})
     idPaciente: string;
