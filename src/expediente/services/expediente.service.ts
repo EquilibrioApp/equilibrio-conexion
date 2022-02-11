@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { AvancePostEntity } from '../models/avances.entity';
@@ -21,12 +21,33 @@ export class ExpedienteService {
         @InjectRepository(CircunferenciasPostEntity) private readonly circunferenciaRepo:Repository<CircunferenciasPostEntity>,
         @InjectRepository(PlieguesPostEntity) private readonly plieguesRepo:Repository<PlieguesPostEntity>,
     ){}
+    
+    async create(exp: Partial<ExpedientePostEntity>): Promise<ExpedientePostEntity> {
+        const item = this.expedienteRepo.create(exp);
+        return this.expedienteRepo.save(item);
+    }
 
-    findAll(){
+    async find(){
         return this.expedienteRepo.find();
     }
+
+    async findOne( id : string){
+        const item = await this.expedienteRepo.findOne(id);
+        if(!item) throw new NotFoundException();
+        return item;
+    }
+
+    async update(id: string, exp: Partial<ExpedientePostEntity>): Promise<ExpedientePostEntity> {
+        const item = await this.findOne(id);
+        return this.expedienteRepo.save({...item, ...exp});
+    }
+
+    async remove(id: string): Promise<ExpedientePostEntity> {
+        const item = await this.findOne(id);
+        return this.expedienteRepo.remove(item);
+    }
     
-    async createNewExpe(body:any) {
+    /*async createNewExpe(body:any) {
         //Meta
         const meta = new MetaPostEntity();
             meta.peso_meta = body.peso_meta;
@@ -73,10 +94,6 @@ export class ExpedienteService {
 
     }
 
-    findOne( id_expediente : string){
-        return this.expedienteRepo.findOne(id_expediente);
-    }   
-
     async createNewAvance(id_expediente: string, body:any) {
         const expediente = await this.expedienteRepo.findOne(id_expediente);
         const newExpediente = this.expedienteRepo.merge(expediente);
@@ -118,6 +135,7 @@ export class ExpedienteService {
         await this.avanceRepo.delete(id_expediente);
         return true;
     }
+    */
 
     /*createExpediente( expediente : ExpedienteDto):Promise<ExpedienteResponseDto>{
         const newExpediente = this.expedienteRepo.create(expediente);

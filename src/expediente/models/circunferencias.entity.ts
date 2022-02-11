@@ -18,9 +18,9 @@ export class CircunferenciasPostEntity{
     @Column("decimal", { precision: 5, scale: 2 })
     pierna: number;
 
-    @OneToOne(()=>AvancePostEntity)
-    @JoinColumn()
-    id_avance: AvancePostEntity;
+    // @OneToOne(()=>AvancePostEntity)
+    // @JoinColumn()
+    // id_avance: AvancePostEntity;
 }
 /*id_circunferencia serial primary key,
  cadera float, 

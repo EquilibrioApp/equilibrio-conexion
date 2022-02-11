@@ -33,9 +33,9 @@ export class PlieguesPostEntity{
     @Column("decimal", { precision: 5, scale: 2 })
     midaxilar: number;
 
-    @OneToOne(()=>AvancePostEntity)
-    @JoinColumn()
-    id_avance: AvancePostEntity	;
+    // @OneToOne(()=>AvancePostEntity)
+    // @JoinColumn()
+    // id_avance: AvancePostEntity	;
 }
 
 /*id_pliegues serial primary key, 

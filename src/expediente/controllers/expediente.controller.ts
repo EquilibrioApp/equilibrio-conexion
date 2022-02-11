@@ -1,25 +1,26 @@
 import { Post , Body, Get, Param, Delete} from '@nestjs/common';
 import { Controller } from '@nestjs/common';
+import { ExpedientePostEntity } from '../models/expediente.entity';
 import { ExpedienteService } from '../services/expediente.service';
 
-@Controller('expediente')
+@Controller('expediente') ///+:expedientId/avance
 export class ExpedienteController {
     constructor(private expedienteService:ExpedienteService){}
 
     @Get()
     findAll(){
-        return this.expedienteService.findAll();
+        return this.expedienteService.find();
     }
 
     @Get(':id_expediente') //TODO mostrar datos de otras tablas
     findOne(@Param('id_expediente') id_expediente: string){
         return this.expedienteService.findOne(id_expediente);
     }
-
-    @Post('/create')
-    creteMera(@Body() body: any) {
-        return this.expedienteService.createNewExpe(body);
+    @Post()
+    creteMera(@Body() body: any): Promise<ExpedientePostEntity> {
+        return this.expedienteService.create(body);
     }
+    /*
 
     @Post(':id_expediente') 
     creteAvance(@Param('id_expediente') id_expediente: string,@Body() body: any) {
@@ -29,5 +30,5 @@ export class ExpedienteController {
     @Delete(':id_expediente') //TODO borrar meta
     delete(@Param('id_expediente') id_expediente: string, id_avance:string) {
         return this.expedienteService.removeExpediente(id_expediente, id_avance);
-    }
+    }*/
 }

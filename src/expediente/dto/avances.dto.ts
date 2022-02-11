@@ -1,12 +1,14 @@
 export class AvancesDto {
-  id_avance?: string;
+  id?: string;
   fecha: Date;
   observacion: string;
-  id_expediente: string;
+  createdAt: Date;
+  updatedAt: Date;
+  expediente: string;
 }
 
 export class AvancesResponseDto{
-  id_avance: string;
+  id: string;
 }
 
 /*

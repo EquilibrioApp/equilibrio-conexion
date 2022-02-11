@@ -1,21 +1,24 @@
-import { Column, Entity, PrimaryGeneratedColumn, OneToOne, JoinColumn, ManyToMany, ManyToOne} from "typeorm";
+import { Column, Entity, PrimaryGeneratedColumn, OneToOne, JoinColumn, ManyToMany, ManyToOne, BaseEntity, CreateDateColumn, UpdateDateColumn} from "typeorm";
 import { ExpedientePostEntity } from './expediente.entity'
 
-
  //TODO Relacion 1>M
-@Entity('avance')
-export class AvancePostEntity{
+ //TODO Actualizacion a CamelCase en DTO y Entidad
+@Entity()
+export class AvancePostEntity extends BaseEntity {
     @PrimaryGeneratedColumn('uuid')//'uuid'
-    id_avance: string;
-
-    @Column({type: 'timestamp', default: () => 'CURRENT_TIMESTAMP'})
-    fecha: Date;
+    id: string;
 
     @Column("text")
     observacion: string;
 
-    @ManyToOne(() => ExpedientePostEntity, expediente => expediente.avances)
-    id_expediente: ExpedientePostEntity;
+    @CreateDateColumn()
+    createdAt: Date;
+
+    @UpdateDateColumn()
+    updatedAt: Date;
+
+    @ManyToOne(() => ExpedientePostEntity, expediente => expediente.avances, {eager: true})
+    expediente: ExpedientePostEntity;
 }
 /*
  id_avance serial primary key, 

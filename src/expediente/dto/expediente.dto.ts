@@ -1,11 +1,12 @@
 //Estructura que va a llegar al endpoint del registro del expediente
 export class ExpedienteDto {
   //Expediente 
-  id_expediente?: string;
-  id_especialista: string;
-  id_paciente: string;
-  id_meta: string;
-  altura_paciente: number;
+  id?: string;
+  idEspecialista: string;
+  idPaciente: string;
+  //id_meta: string;
+  alturaPaciente: number;
+  //avances: AvancesPostEntity[]
   //Meta
   //Avances
 }
