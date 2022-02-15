@@ -1,10 +1,10 @@
-import { Column, Entity, PrimaryGeneratedColumn, OneToOne, JoinColumn} from "typeorm";
-import { AvancePostEntity } from "./avances.entity";
+import { Column, Entity, PrimaryGeneratedColumn, OneToOne, JoinColumn, BaseEntity} from "typeorm";
+//import { AvanceEntity } from "./avances.entity";
 
-@Entity('pliegues')
-export class PlieguesPostEntity{
+@Entity()
+export class PlieguesEntity extends BaseEntity{
     @PrimaryGeneratedColumn('uuid')//'uuid'
-    id_pliegues: string;
+    id: string;
 
     @Column("decimal", { precision: 5, scale: 2 })
     tricipital: number;
@@ -22,13 +22,13 @@ export class PlieguesPostEntity{
     subescupular: number;
     
     @Column("decimal", { precision: 5, scale: 2 })
-    pantorrilla_media: number;
+    pantorrillaMedia: number;
     
     @Column("decimal", { precision: 5, scale: 2 })
     abdominal: number;
     
     @Column("decimal", { precision: 5, scale: 2 })
-    muslo_medio: number;
+    musloMedio: number;
     
     @Column("decimal", { precision: 5, scale: 2 })
     midaxilar: number;

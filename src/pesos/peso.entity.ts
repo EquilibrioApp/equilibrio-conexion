@@ -1,8 +1,8 @@
-import { Column, Entity, PrimaryGeneratedColumn, OneToOne, JoinColumn, PrimaryColumn} from "typeorm";
-import { AvancePostEntity } from "./avances.entity";
+import { Column, Entity, PrimaryGeneratedColumn, OneToOne, JoinColumn, PrimaryColumn, BaseEntity} from "typeorm";
+//import { AvanceEntity } from "./avances.entity";
 
-@Entity('peso')
-export class PesoPostEntity{
+@Entity()
+export class PesoEntity extends BaseEntity{
     @PrimaryGeneratedColumn('uuid')//'uuid'
     id: string;
 

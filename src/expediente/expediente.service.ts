@@ -1,28 +1,23 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { AvancePostEntity } from '../models/avances.entity';
-import { CircunferenciasPostEntity } from '../models/circunferencias.entity';
+// import { AvanceEntity } from '../avances.entity';
+// import { CircunferenciasEntity } from '../circunferencias.entity';
 
-//import { ExpedienteDto, ExpedienteResponseDto } from '../dto/expediente.dto';
-import { ExpedientePostEntity } from '../models/expediente.entity';
-import { MetaPostEntity } from '../models/meta.entity';
-import { PesoPostEntity } from '../models/peso.entity';
-import { PlieguesPostEntity } from '../models/pliegues.entity';
+import { ExpedienteDto, ExpedienteResponseDto } from './dto/expediente.dto';
+import { ExpedienteEntity } from './expediente.entity';
+// import { MetaEntity } from '../models/meta.entity';
+// import { PesoEntity } from '../models/peso.entity';
+// import { PlieguesEntity } from '../models/pliegues.entity';
 
 
 @Injectable()
 export class ExpedienteService {
     constructor(
-        @InjectRepository(ExpedientePostEntity)private readonly expedienteRepo:Repository<ExpedientePostEntity>,
-        @InjectRepository(MetaPostEntity) private readonly metaRepo:Repository<MetaPostEntity>,
-        @InjectRepository(AvancePostEntity) private readonly avanceRepo:Repository<AvancePostEntity>,
-        @InjectRepository(PesoPostEntity) private readonly pesoRepo:Repository<PesoPostEntity>,
-        @InjectRepository(CircunferenciasPostEntity) private readonly circunferenciaRepo:Repository<CircunferenciasPostEntity>,
-        @InjectRepository(PlieguesPostEntity) private readonly plieguesRepo:Repository<PlieguesPostEntity>,
+        @InjectRepository(ExpedienteEntity)private readonly expedienteRepo:Repository<ExpedienteEntity>,
     ){}
     
-    async create(exp: Partial<ExpedientePostEntity>): Promise<ExpedientePostEntity> {
+    async create(exp: Partial<ExpedienteEntity>): Promise<ExpedienteEntity> {
         const item = this.expedienteRepo.create(exp);
         return this.expedienteRepo.save(item);
     }
@@ -37,48 +32,48 @@ export class ExpedienteService {
         return item;
     }
 
-    async update(id: string, exp: Partial<ExpedientePostEntity>): Promise<ExpedientePostEntity> {
+    async update(id: string, exp: Partial<ExpedienteEntity>): Promise<ExpedienteEntity> {
         const item = await this.findOne(id);
         return this.expedienteRepo.save({...item, ...exp});
     }
 
-    async remove(id: string): Promise<ExpedientePostEntity> {
+    async remove(id: string): Promise<ExpedienteEntity> {
         const item = await this.findOne(id);
         return this.expedienteRepo.remove(item);
     }
     
     /*async createNewExpe(body:any) {
         //Meta
-        const meta = new MetaPostEntity();
+        const meta = new MetaEntity();
             meta.peso_meta = body.peso_meta;
             meta.fecha_meta = body.fecha_meta;
         const newMeta = await this.metaRepo.save(meta);
         //Expediente 
-        const expediente = new ExpedientePostEntity();
+        const expediente = new ExpedienteEntity();
             expediente.id_especialista = body.id_especialista;
             expediente.id_paciente = body.id_paciente;
             expediente.id_meta = newMeta;
             expediente.altura_paciente = body.altura_paciente;
         const newExpediente = await this.expedienteRepo.save(expediente);
         //Avances
-        const avances = new AvancePostEntity();
+        const avances = new AvanceEntity();
             avances.fecha = body.fecha;
             avances.observacion = body.observacion;
             avances.id_expediente = newExpediente;
         const newAvance = await this.avanceRepo.save(avances);
         //Peso
-        const peso = new PesoPostEntity();
+        const peso = new PesoEntity();
             peso.peso = body.peso;
             peso.id_avance = newAvance;
         //Circunferencia
-        const circunferencia = new CircunferenciasPostEntity();
+        const circunferencia = new CircunferenciasEntity();
             circunferencia.cadera = body.cadera;
             circunferencia.cintura = body.cintura;
             circunferencia.brazo = body.brazo;
             circunferencia.pierna = body.pierna;
             circunferencia.id_avance = newAvance;
         //Pliegues
-        const pliegues = new PlieguesPostEntity();
+        const pliegues = new PlieguesEntity();
             pliegues.tricipital = body.tricipital; 
             pliegues.pectoral = body.pectoral;
             pliegues.bicipital = body.bicipital;
@@ -98,24 +93,24 @@ export class ExpedienteService {
         const expediente = await this.expedienteRepo.findOne(id_expediente);
         const newExpediente = this.expedienteRepo.merge(expediente);
         //Avances
-        const avances = new AvancePostEntity();
+        const avances = new AvanceEntity();
             avances.fecha = body.fecha;
             avances.observacion = body.observacion;
             avances.id_expediente = newExpediente;
         const newAvance = await this.avanceRepo.save(avances);
         //Peso
-        const peso = new PesoPostEntity();
+        const peso = new PesoEntity();
             peso.peso = body.peso;
             peso.id_avance = newAvance;
         //Circunferencia
-        const circunferencia = new CircunferenciasPostEntity();
+        const circunferencia = new CircunferenciasEntity();
             circunferencia.cadera = body.cadera;
             circunferencia.cintura = body.cintura;
             circunferencia.brazo = body.brazo;
             circunferencia.pierna = body.pierna;
             circunferencia.id_avance = newAvance;
         //Pliegues
-        const pliegues = new PlieguesPostEntity();
+        const pliegues = new PlieguesEntity();
             pliegues.tricipital = body.tricipital; 
             pliegues.pectoral = body.pectoral;
             pliegues.bicipital = body.bicipital;

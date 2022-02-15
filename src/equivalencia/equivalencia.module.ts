@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
-import { EquivalenciaController } from './controllers/equivalencia.controller';
-import { EquivalenciaService } from './services/equivalencia.service';
+import { EquivalenciaController } from './equivalencia.controller';
+import { EquivalenciaService } from './equivalencia.service';
 
 @Module({
   providers: [EquivalenciaService],

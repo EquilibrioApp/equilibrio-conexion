@@ -1,10 +1,10 @@
-import { Column, Entity, PrimaryGeneratedColumn, OneToOne, JoinColumn, ManyToMany, ManyToOne} from "typeorm";
+import { Column, Entity, PrimaryGeneratedColumn, OneToOne, JoinColumn, ManyToMany, ManyToOne, BaseEntity} from "typeorm";
 
  //TODO Relacion 1>M
-@Entity('avance')
-export class AvancePostEntity{
+@Entity()
+export class AvanceEntity extends BaseEntity{
     @PrimaryGeneratedColumn('uuid')//'uuid'
-    id_avance: string;
+    id: string;
 
     @Column({type: 'timestamp', default: () => 'CURRENT_TIMESTAMP'}) //TODO fecha del dia actual automatico y del expediente ;
     fecha: Date;

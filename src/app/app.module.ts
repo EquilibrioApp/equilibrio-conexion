@@ -7,6 +7,13 @@ import { DoctorModule } from '../doctor/doctor.module';
 import { PatientModule } from 'src/patient/patient.module';
 import { AgendaModule } from 'src/agenda/agenda.module';
 import { ExpedienteModule } from 'src/expediente/expediente.module';
+import { CircunferenciasModule } from 'src/circunferencias/circunferencias.module';
+import { AvancesModule } from 'src/avances/avances.module';
+import { EquivalenciaModule } from 'src/equivalencia/equivalencia.module';
+import { IndicesModule } from 'src/indices/indices.module';
+import { MetasModule } from 'src/metas/metas.module';
+import { PesosModule } from 'src/pesos/pesos.module';
+import { PlieguesModule } from 'src/pliegues/pliegues.module';
 
 @Module({
   //Rutas de la application
@@ -26,6 +33,8 @@ import { ExpedienteModule } from 'src/expediente/expediente.module';
       //dropSchema: true
     }),
     DoctorModule, PatientModule, AgendaModule, ExpedienteModule,
+    CircunferenciasModule, AvancesModule, EquivalenciaModule, IndicesModule,
+    MetasModule, PesosModule, PlieguesModule,
   ],
   controllers: [LoginController]
 })

@@ -1,14 +1,14 @@
 export class IndicesDto {
-  id_indices?: string;
-  masa_corporal: number;
-  masa_osea: number;
-  masa_residual: number;
-  masa_grasa: number;
-  id_avance: string;
+  id?: string;
+  masaCorporal: number;
+  masaOsea: number;
+  masaResidual: number;
+  masaGrasa: number;
+  idAvance: string;
 }
 
 export class IndicesResponseDto{
-  id_indices: string;
+  id: string;
 }
 
 /*id_indice serial primary key,  

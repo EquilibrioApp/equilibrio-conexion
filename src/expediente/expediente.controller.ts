@@ -1,7 +1,7 @@
 import { Post , Body, Get, Param, Delete} from '@nestjs/common';
 import { Controller } from '@nestjs/common';
-import { ExpedientePostEntity } from '../models/expediente.entity';
-import { ExpedienteService } from '../services/expediente.service';
+import { ExpedienteEntity } from './expediente.entity';
+import { ExpedienteService } from './expediente.service';
 
 @Controller('expediente') ///+:expedientId/avance
 export class ExpedienteController {
@@ -17,7 +17,7 @@ export class ExpedienteController {
         return this.expedienteService.findOne(id_expediente);
     }
     @Post()
-    creteMera(@Body() body: any): Promise<ExpedientePostEntity> {
+    creteMera(@Body() body: any): Promise<ExpedienteEntity> {
         return this.expedienteService.create(body);
     }
     /*

@@ -1,10 +1,9 @@
-import { Column, Entity, PrimaryGeneratedColumn, OneToOne, JoinColumn} from "typeorm";
-import { AvancePostEntity } from "./avances.entity";
+import { Column, Entity, PrimaryGeneratedColumn, OneToOne, JoinColumn, BaseEntity} from "typeorm";
 
 @Entity('circunferencia')
-export class CircunferenciasPostEntity{
+export class CircunferenciasEntity extends BaseEntity{
     @PrimaryGeneratedColumn('uuid')//'uuid'
-    id_circunferenia: string;
+    id: string;
 
     @Column("decimal", { precision: 5, scale: 2 })
     cadera: number;
