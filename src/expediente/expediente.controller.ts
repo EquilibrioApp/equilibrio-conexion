@@ -20,9 +20,7 @@ export class ExpedienteController {
     creteMera(@Body() body: any): Promise<ExpedienteEntity> {
         return this.expedienteService.create(body);
     }
-    /*
-
-    @Post(':id_expediente') 
+    /*@Post(':id_expediente') 
     creteAvance(@Param('id_expediente') id_expediente: string,@Body() body: any) {
         return this.expedienteService.createNewAvance(id_expediente, body);
     }

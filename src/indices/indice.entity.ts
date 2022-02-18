@@ -2,7 +2,7 @@ import { Column, Entity, PrimaryGeneratedColumn, OneToOne, JoinColumn, BaseEntit
 //import { ExpedienteEntity } from "./expediente.entity";
 
 @Entity()
-export class MetaEntity extends BaseEntity{
+export class IndiceEntity extends BaseEntity{
     @PrimaryGeneratedColumn('uuid')//'uuid'
     id: string;
 
