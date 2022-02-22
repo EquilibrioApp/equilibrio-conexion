@@ -21,6 +21,7 @@ export class ExpedienteEntity extends BaseEntity{
 
     @OneToMany(()=> AvanceEntity, avance => avance.expediente)
     avances:AvanceEntity[];
+    
 }
 
 /*create table expediente (

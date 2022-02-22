@@ -1,4 +1,5 @@
 import { ExpedienteEntity } from "src/expediente/expediente.entity";
+import { PesoEntity } from "src/pesos/peso.entity";
 import { Column, Entity, PrimaryGeneratedColumn, OneToOne, JoinColumn, ManyToMany, ManyToOne, BaseEntity, CreateDateColumn, UpdateDateColumn} from "typeorm";
 
  //TODO Relacion 1>M
@@ -19,6 +20,9 @@ export class AvanceEntity extends BaseEntity {
 
     @ManyToOne(() => ExpedienteEntity, expediente => expediente.avances, {eager: true})
     expediente: ExpedienteEntity;
+
+    @OneToOne(() => PesoEntity, peso => peso.avance, {eager: true})
+    peso: PesoEntity;
 }
 /*
  id_avance serial primary key, 

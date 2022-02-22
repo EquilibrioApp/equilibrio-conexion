@@ -1,11 +1,15 @@
 import { Post , Body, Get, Param, Delete} from '@nestjs/common';
 import { Controller } from '@nestjs/common';
+import { MetasService } from 'src/metas/metas.service';
 import { ExpedienteEntity } from './expediente.entity';
 import { ExpedienteService } from './expediente.service';
 
 @Controller('expediente') ///+:expedientId/avance
 export class ExpedienteController {
-    constructor(private expedienteService:ExpedienteService){}
+    constructor(
+        private expedienteService:ExpedienteService,
+        private metasService:MetasService,
+    ){}
 
     @Get()
     findAll(){

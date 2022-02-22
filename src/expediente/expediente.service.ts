@@ -1,20 +1,16 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import { AvancesService } from 'src/avances/avances.service';
 import { Repository } from 'typeorm';
-// import { AvanceEntity } from '../avances.entity';
-// import { CircunferenciasEntity } from '../circunferencias.entity';
-
 import { ExpedienteDto, ExpedienteResponseDto } from './dto/expediente.dto';
 import { ExpedienteEntity } from './expediente.entity';
-// import { MetaEntity } from '../models/meta.entity';
-// import { PesoEntity } from '../models/peso.entity';
-// import { PlieguesEntity } from '../models/pliegues.entity';
 
 
 @Injectable()
 export class ExpedienteService {
     constructor(
         @InjectRepository(ExpedienteEntity)private readonly expedienteRepo:Repository<ExpedienteEntity>,
+        private avancesService : AvancesService,
     ){}
     
     async create(exp: Partial<ExpedienteEntity>): Promise<ExpedienteEntity> {
