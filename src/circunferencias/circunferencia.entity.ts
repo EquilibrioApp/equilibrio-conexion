@@ -1,29 +1,38 @@
 import { AvanceEntity } from "src/avances/avances.entity";
 import { Column, Entity, PrimaryGeneratedColumn, OneToOne, JoinColumn, BaseEntity, PrimaryColumn} from "typeorm";
-//import { ExpedienteEntity } from "./expediente.entity";
 
 @Entity()
-export class IndiceEntity extends BaseEntity{
+export class CircunferenciaEntity extends BaseEntity{
     // @PrimaryGeneratedColumn('uuid')//'uuid'
     // id: string;
 
     @PrimaryColumn()
     avanceId: string;
 
-    @OneToOne(() => AvanceEntity, avance => avance.indice) 
+    @OneToOne(() => AvanceEntity, avance => avance.circunferencia) 
     @JoinColumn()
     avance: AvanceEntity;
 
     @Column("decimal", { precision: 5, scale: 2 })
-    masaCorporal: number;
-    
-    @Column("decimal", { precision: 5, scale: 2 })
-    masaOsea: number;
-    
-    @Column("decimal", { precision: 5, scale: 2 })
-    masaResidual: number;
+    cadera: number;
 
     @Column("decimal", { precision: 5, scale: 2 })
-    masaGrasa: number;
-    
+    cintura: number;
+
+    @Column("decimal", { precision: 5, scale: 2 })
+    brazo: number;
+
+    @Column("decimal", { precision: 5, scale: 2 })
+    pierna: number;
+
+    // @OneToOne(()=>AvancePostEntity)
+    // @JoinColumn()
+    // id_avance: AvancePostEntity;
 }
+/*id_circunferencia serial primary key,
+ cadera float, 
+ cintura float, 
+ brazo float, 
+ pierna float 
+ id_avance bigint);
+*/

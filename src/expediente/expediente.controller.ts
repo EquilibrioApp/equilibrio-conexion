@@ -16,15 +16,16 @@ export class ExpedienteController {
         return this.expedienteService.find();
     }
 
-    @Get(':id_expediente') //TODO mostrar datos de otras tablas
+    @Get(':id_expediente') 
     findOne(@Param('id_expediente') id_expediente: string){
         return this.expedienteService.findOne(id_expediente);
     }
+
     @Post()
-    creteMera(@Body() body: any): Promise<ExpedienteEntity> {
+    creteMera(@Body() body: any): Promise<ExpedienteEntity> { //TODO conexion con la relacion automatica ?
         return this.expedienteService.create(body);
     }
-    /*@Post(':id_expediente') 
+    /*@Put(':id_expediente') 
     creteAvance(@Param('id_expediente') id_expediente: string,@Body() body: any) {
         return this.expedienteService.createNewAvance(id_expediente, body);
     }

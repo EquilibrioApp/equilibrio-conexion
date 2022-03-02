@@ -1,5 +1,6 @@
 import { AvanceEntity } from "src/avances/avances.entity";
-import { Column, Entity, PrimaryGeneratedColumn, OneToOne, JoinColumn, OneToMany, BaseEntity} from "typeorm";
+import { MetaEntity } from "src/metas/meta.entity";
+import { Column, Entity, PrimaryGeneratedColumn, OneToOne, JoinColumn, OneToMany, BaseEntity, CreateDateColumn, UpdateDateColumn} from "typeorm";
 
 @Entity()
 export class ExpedienteEntity extends BaseEntity{
@@ -7,21 +8,25 @@ export class ExpedienteEntity extends BaseEntity{
     id: string;
 
     @Column({default : ""})
-    idEspecialista: string;
+    especialistaId: string;
     
     @Column({default : ""})
-    idPaciente: string;
+    pacienteId: string;
     
-    // @OneToOne(() => MetaPostEntity)
-    // @JoinColumn()
-    // id_meta: MetaPostEntity;
-    
+    @CreateDateColumn()
+    createdAt: Date;
+
+    @UpdateDateColumn()
+    updatedAt: Date;
+
     @Column("decimal", { precision: 5, scale: 2 })
     alturaPaciente: number;
 
     @OneToMany(()=> AvanceEntity, avance => avance.expediente)
-    avances:AvanceEntity[];
+    avances:AvanceEntity;
     
+    @OneToOne(() => MetaEntity , meta => meta.expediente)
+    meta: MetaEntity;
 }
 
 /*create table expediente (

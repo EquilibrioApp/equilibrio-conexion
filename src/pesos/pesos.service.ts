@@ -18,19 +18,19 @@ export class PesosService {
         return this.pesoRepo.find();
     }
 
-    async findOne( id : string){
-        const item = await this.pesoRepo.findOne(id);
+    async findOne( avanceId : string){
+        const item = await this.pesoRepo.findOne(avanceId);
         if(!item) throw new NotFoundException();
         return item;
     }
 
-    async update(id: string, exp: Partial<PesoEntity>): Promise<PesoEntity> {
-        const item = await this.findOne(id);
+    async update(avanceId: string, exp: Partial<PesoEntity>): Promise<PesoEntity> {
+        const item = await this.findOne(avanceId);
         return this.pesoRepo.save({...item, ...exp});
     }
 
-    async remove(id: string): Promise<PesoEntity> {
-        const item = await this.findOne(id);
+    async remove(avanceId: string): Promise<PesoEntity> {
+        const item = await this.findOne(avanceId);
         return this.pesoRepo.remove(item);
     }
 }

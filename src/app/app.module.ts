@@ -33,8 +33,6 @@ import { PlieguesModule } from 'src/pliegues/pliegues.module';
       //dropSchema: true
     }),
     DoctorModule, PatientModule, AgendaModule, ExpedienteModule,
-    CircunferenciasModule, AvancesModule, EquivalenciaModule, IndicesModule,
-    MetasModule, PesosModule, PlieguesModule,
   ],
   controllers: [LoginController]
 })
