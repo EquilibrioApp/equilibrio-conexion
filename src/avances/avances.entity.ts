@@ -12,6 +12,9 @@ export class AvanceEntity extends BaseEntity {
     @PrimaryGeneratedColumn('uuid')//'uuid'
     id: string;
 
+    @ManyToOne(() => ExpedienteEntity, expediente => expediente.avances)
+    expediente: ExpedienteEntity;
+
     @Column("text")
     observacion: string;
 
@@ -20,9 +23,6 @@ export class AvanceEntity extends BaseEntity {
 
     @UpdateDateColumn()
     updatedAt: Date;
-
-    @ManyToOne(() => ExpedienteEntity, expediente => expediente.avances, {eager: true})
-    expediente: ExpedienteEntity;
 
     @OneToOne(() => PesoEntity, peso => peso.avance, {eager: true})
     peso: PesoEntity;

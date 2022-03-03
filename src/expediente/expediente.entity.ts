@@ -5,7 +5,11 @@ import { Column, Entity, PrimaryGeneratedColumn, OneToOne, JoinColumn, OneToMany
 @Entity()
 export class ExpedienteEntity extends BaseEntity{
     @PrimaryGeneratedColumn('uuid')//'uuid'
-    id: string;
+    metaId: string;
+
+    @OneToOne(() => MetaEntity , meta => meta.expediente)
+    @JoinColumn()
+    meta: MetaEntity;
 
     @Column({default : ""})
     especialistaId: string;
@@ -22,11 +26,9 @@ export class ExpedienteEntity extends BaseEntity{
     @Column("decimal", { precision: 5, scale: 2 })
     alturaPaciente: number;
 
-    @OneToMany(()=> AvanceEntity, avance => avance.expediente)
+    @OneToMany(()=> AvanceEntity, avance => avance.expediente, {eager: true})
     avances:AvanceEntity;
-    
-    @OneToOne(() => MetaEntity , meta => meta.expediente)
-    meta: MetaEntity;
+  
 }
 
 /*create table expediente (
