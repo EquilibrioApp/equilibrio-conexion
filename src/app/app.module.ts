@@ -3,8 +3,6 @@ import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
 import { PatientModule } from '../patient/patient.module';
-import { AgendaModule } from '../agenda/agenda.module';
-import { ExpedienteModule } from '../expediente/expediente.module';
 import { AuthModule } from '../auth/auth.module';
 import { DoctorModule } from '../doctor/doctor.module';
 import { UsersModule } from 'src/users/users.module';
@@ -26,7 +24,7 @@ import { UsersModule } from 'src/users/users.module';
       retryAttempts: 5,
       //dropSchema: true
     }),
-    PatientModule, DoctorModule, AgendaModule, ExpedienteModule, AuthModule, UsersModule
+    PatientModule, DoctorModule, AuthModule, UsersModule
   ]
 })
 export class AppModule {}
