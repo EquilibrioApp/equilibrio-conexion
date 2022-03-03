@@ -2,11 +2,12 @@ import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
-import { LoginController } from '../login/login.controller';
+import { PatientModule } from '../patient/patient.module';
+import { AgendaModule } from '../agenda/agenda.module';
+import { ExpedienteModule } from '../expediente/expediente.module';
+import { AuthModule } from '../auth/auth.module';
 import { DoctorModule } from '../doctor/doctor.module';
-import { PatientModule } from 'src/patient/patient.module';
-import { AgendaModule } from 'src/agenda/agenda.module';
-import { ExpedienteModule } from 'src/expediente/expediente.module';
+import { UsersModule } from 'src/users/users.module';
 
 @Module({
   //Rutas de la application
@@ -15,7 +16,7 @@ import { ExpedienteModule } from 'src/expediente/expediente.module';
     TypeOrmModule.forRoot({ 
       type: 'postgres',
       host: process.env.DB_HOST,
-      port: parseInt(<string>process.env.DB_PORT)||5433,
+      port: parseInt(<string>process.env.DB_PORT),
       username: process.env.DB_USER,
       password: process.env.DB_PASSWORD,
       database: process.env.DB_DATABASE,
@@ -25,8 +26,7 @@ import { ExpedienteModule } from 'src/expediente/expediente.module';
       retryAttempts: 5,
       //dropSchema: true
     }),
-    DoctorModule, PatientModule, AgendaModule, ExpedienteModule,
-  ],
-  controllers: [LoginController]
+    PatientModule, DoctorModule, AgendaModule, ExpedienteModule, AuthModule, UsersModule
+  ]
 })
 export class AppModule {}

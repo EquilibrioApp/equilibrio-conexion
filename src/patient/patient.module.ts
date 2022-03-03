@@ -1,8 +1,9 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { PatientController } from './controllers/patient.controller';
-import { PatientEntity } from './models/patient.entity';
-import { PatientService } from './services/patient.service';
+
+import { PatientController } from './patient.controller';
+import { PatientEntity } from './patient.entity';
+import { PatientService } from './patient.service';
 
 @Module({
   imports: [TypeOrmModule.forFeature([PatientEntity])], //Arreglo de entidades

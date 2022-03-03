@@ -1,13 +1,13 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { DoctorController } from './controllers/doctor.controller';
-import { DoctorPostEntity } from './models/doctor.entity';
-import { DoctorService } from './services/doctor.service';
-//Estaba en la carpeta DoctorModule
+
+import { DoctorService } from './doctor.service';
+import { DoctorController } from './doctor.controller';
+import { DoctorEntity } from './doctor.entity';
+
 @Module({
-  imports: [TypeOrmModule.forFeature([DoctorPostEntity])],//Arreglo de entidades
+  imports: [TypeOrmModule.forFeature([DoctorEntity])],
   providers: [DoctorService],
-  controllers: [DoctorController],
-  exports: [DoctorService]//Exportar módulos para uso de otros 
+  controllers: [DoctorController]
 })
 export class DoctorModule {}
