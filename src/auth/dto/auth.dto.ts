@@ -4,7 +4,7 @@ export class AuthDto {
 }
 export class AuthResponseDto{
     /*  */
-    token: any;
+    token: token;
     result: User;
 }
 

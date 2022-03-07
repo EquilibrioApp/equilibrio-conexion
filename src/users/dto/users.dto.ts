@@ -18,7 +18,7 @@ export class UsersDto {
 
     @IsNotEmpty()
     @IsEmail()
-    @Contains('@google.com')
+    @Contains('@gmail.com')
     email: string;
 
     @IsNotEmpty()
@@ -34,21 +34,21 @@ export class UsersDto {
     phoneNumber: string;
 
     //Info en caso de ser Doctor
-    @IsNotEmpty()
+    
     cedula?: string;
 
-    @IsNotEmpty()
+    
     houseNumber?: string;
     
-    @IsNotEmpty()
+    
     streetName?: string;
 
-    @IsNotEmpty()
+    
     postalCode?: string;
 
     //Info en caso de ser paciente
 
-    @IsNotEmpty()
+    
     nutriCodigo?: string;
     
 }

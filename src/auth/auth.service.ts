@@ -25,7 +25,7 @@ export class AuthService {
         //Se desestructura el objeto de usuario para no retornar contrasena
         //Nota personal: El atributo que ponemos entre parentesis es el que se quita del objeto final
         const { password, ...result } = user;
-        const token = this.login(result);
+        const token = await this.login(result);
         console.log({token, result});
         //TODO Hace falta reotrnar el objeto como se expresa en AuthresponseDto
         return {token, result};
@@ -41,8 +41,8 @@ export class AuthService {
 
   async login(user:User): Promise<token>{
     const payload = { 
-      // id: user.id, 
-      // name: user.name, 
+      id: user.id, 
+      name: user.name, 
       // userType: user.userType, 
       // fathersLastName: user.fathersLastName, 
       // mothersLastName: user.mothersLastName, 

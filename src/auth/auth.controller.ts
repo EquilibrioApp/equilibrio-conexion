@@ -12,5 +12,10 @@ export class AuthController {
   async login(@Body() body:AuthDto): Promise<AuthResponseDto> {
     return this.authService.validateUser(body.email, body.password);
   }
+
+  @Get('logout')
+  async logout(@Body() body:AuthDto): Promise<AuthResponseDto> {
+    return this.authService.validateUser(body.email, body.password);
+  }
 }
 

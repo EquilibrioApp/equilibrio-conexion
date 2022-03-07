@@ -64,4 +64,7 @@ export class UsersService {
     async find(email: string): Promise<UsersDto | undefined>{
         return this.userRepository.findOne({where:{email}});
     }
+    async findById(id: string): Promise<UsersDto>{
+        return this.userRepository.findOne(id);
+    }
 }
