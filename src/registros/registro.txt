@@ -1,0 +1,17 @@
+  __________________________  Comida __________________________            
+1.- ¿Pudo comer de acuerdo al menú en el periodo de tiempo especificado?   Si/No 
+2.- Mostrarán a forma de cuadrados las categorías que se tienen de
+    comidas fuera de la dieta                                              Strign 
+
+  _________________________ Emociones _________________________   
+3.- Esquema del 1 al 5                                                     1-5
+4.- ¿Ha sentido irritabilidad?                                             Si/No  
+5.- ¿Se ha sentido decaído?                                                Si/No      
+6.- ¿Ha sentido apatía?                                                    Sí/No                 
+7.- ¿Ha sentido la necesidad de romper la dieta?                           Sí/No/En ocasion
+  __________________________ Fisicos __________________________   
+8.- ¿Siente cansancio?                                                     Sí/No/En ocasion
+9.-¿Ha sentido dolores de cabeza?                                          Sí/No/En ocasion     
+10.-¿Ha experimentado dolor de estómago?                                   Sí/No/En ocasion
+11.-¿Ha experimentado mareo?                                               Sí/No/En ocasion
+12.-¿Ha dormido bien?                                                      Sí/No/En ocasion

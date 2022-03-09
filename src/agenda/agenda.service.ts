@@ -1,14 +1,13 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm/repository/Repository';
-import { AgendaDto, AgendaResponseDto } from '../dto/agenda.dto';
-import { AgendaPostEntity } from '../models/agenda.entity';
+import { AgendaDto, AgendaResponseDto } from './dto/agenda.dto';
+import { AgendaEntity } from './agenda.entity';
 
 @Injectable()
 export class AgendaService {
     constructor(
-        @InjectRepository(AgendaPostEntity)
-        private readonly  agendaRepo: Repository<AgendaPostEntity>
+        @InjectRepository(AgendaEntity) private readonly  agendaRepo: Repository<AgendaEntity>
     ){}
 
     findAll(){
@@ -35,10 +34,4 @@ export class AgendaService {
         await this.agendaRepo.delete(id_agenda);
         return true;
     }
-
-
-    //read
-    //update 
-    //deleta
-
 }

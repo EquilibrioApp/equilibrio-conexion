@@ -5,17 +5,16 @@ import { Column, Entity, PrimaryGeneratedColumn, OneToOne, JoinColumn, OneToMany
 @Entity()
 export class ExpedienteEntity extends BaseEntity{
     @PrimaryGeneratedColumn('uuid')//'uuid'
-    metaId: string;
-
-    @OneToOne(() => MetaEntity , meta => meta.expediente)
-    @JoinColumn()
-    meta: MetaEntity;
+    id: string;
 
     @Column({default : ""})
     especialistaId: string;
     
     @Column({default : ""})
     pacienteId: string;
+
+    @Column({default : ""})
+    sexo: string;
     
     @CreateDateColumn()
     createdAt: Date;
@@ -28,6 +27,12 @@ export class ExpedienteEntity extends BaseEntity{
 
     @OneToMany(()=> AvanceEntity, avance => avance.expediente, {eager: true})
     avances:AvanceEntity;
+
+    // @OneToMany(()=> RegistroEntity, registros => registros.expediente, {eager: true})
+    // registros:RegistroEntity;
+
+    @OneToOne(() => MetaEntity , meta => meta.expediente, {eager: true})
+    meta: MetaEntity;
   
 }
 

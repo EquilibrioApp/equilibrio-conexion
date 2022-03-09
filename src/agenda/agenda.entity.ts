@@ -1,7 +1,7 @@
 import { Column, Entity, PrimaryGeneratedColumn, OneToOne, JoinColumn} from "typeorm";
 
-@Entity('agenda')
-export class AgendaPostEntity{
+@Entity()
+export class AgendaEntity{
     @PrimaryGeneratedColumn('uuid')//'uuid'
     id_agenda: string;
     

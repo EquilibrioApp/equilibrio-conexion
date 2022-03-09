@@ -14,10 +14,19 @@ export class CircunferenciaEntity extends BaseEntity{
     avance: AvanceEntity;
 
     @Column("decimal", { precision: 5, scale: 2 })
-    cadera: number;
+    femoral: number;
+
+    @Column("decimal", { precision: 5, scale: 2 })
+    biestiloideo: number;
+
+    @Column("decimal", { precision: 5, scale: 2 })
+    cuello: number;
 
     @Column("decimal", { precision: 5, scale: 2 })
     cintura: number;
+
+    @Column("decimal", { precision: 5, scale: 2 })
+    cadera: number;
 
     @Column("decimal", { precision: 5, scale: 2 })
     brazo: number;

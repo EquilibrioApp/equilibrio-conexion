@@ -3,7 +3,10 @@ import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
 import { AgendaModule } from 'src/agenda/agenda.module';
+import { EquivalenciaModule } from 'src/equivalencia/equivalencia.module';
+import { EquivalenciaService } from 'src/equivalencia/equivalencia.service';
 import { ExpedienteModule } from 'src/expediente/expediente.module';
+import { RegistroModule } from 'src/registros/registros.module';
 
 @Module({
   //Rutas de la application
@@ -20,8 +23,8 @@ import { ExpedienteModule } from 'src/expediente/expediente.module';
       synchronize: true,
       retryDelay: 3000,
       retryAttempts: 5,
-      //dropSchema: true
-    }), AgendaModule, ExpedienteModule,
+      // dropSchema: true
+    }), AgendaModule, ExpedienteModule, EquivalenciaModule, RegistroModule
   ],
   controllers: []
 })

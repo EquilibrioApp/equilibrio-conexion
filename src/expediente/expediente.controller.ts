@@ -1,4 +1,4 @@
-import { Post , Body, Get, Param, Delete} from '@nestjs/common';
+import { Post , Body, Get, Param, Delete, Put} from '@nestjs/common';
 import { Controller } from '@nestjs/common';
 import { MetasService } from 'src/metas/metas.service';
 import { ExpedienteEntity } from './expediente.entity';
@@ -16,22 +16,23 @@ export class ExpedienteController {
         return this.expedienteService.find();
     }
 
-    @Get(':id_expediente') 
-    findOne(@Param('id_expediente') id_expediente: string){
-        return this.expedienteService.findOne(id_expediente);
+    @Get(':id') 
+    findOne(@Param('id') id: string){
+        return this.expedienteService.findOne(id);
     }
 
     @Post()
     creteMera(@Body() body: any): Promise<ExpedienteEntity> { //TODO conexion con la relacion automatica ?
         return this.expedienteService.create(body);
     }
-    /*@Put(':id_expediente') 
-    creteAvance(@Param('id_expediente') id_expediente: string,@Body() body: any) {
-        return this.expedienteService.createNewAvance(id_expediente, body);
+    
+    @Put(':id') 
+    update(@Param('id') id: string,@Body() body: any) {
+        return this.expedienteService.update(id, body);
     }
 
-    @Delete(':id_expediente') //TODO borrar meta
-    delete(@Param('id_expediente') id_expediente: string, id_avance:string) {
-        return this.expedienteService.removeExpediente(id_expediente, id_avance);
-    }*/
+    @Delete(':id') //TODO borrar expediente 
+    delete(@Param('id_expediente') id: string) {
+        return this.expedienteService.remove(id);
+    }
 }

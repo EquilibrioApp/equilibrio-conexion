@@ -1,11 +1,15 @@
 import { ExpedienteEntity } from "src/expediente/expediente.entity";
-import { Column, Entity, PrimaryGeneratedColumn, OneToOne, JoinColumn, BaseEntity} from "typeorm";
+import { Column, Entity, PrimaryGeneratedColumn, OneToOne, JoinColumn, BaseEntity, PrimaryColumn} from "typeorm";
 //import { ExpedienteEntity } from "./expediente.entity";
 
 @Entity()
 export class MetaEntity extends BaseEntity{
-    @PrimaryGeneratedColumn('uuid')//'uuid'
-    id: string;
+    @PrimaryColumn('uuid')//'uuid'
+    expedienteId: string;
+
+    @OneToOne(() => ExpedienteEntity, expediente => expediente.meta)
+    @JoinColumn()
+    expediente: ExpedienteEntity;
 
     @Column({default: ''})
     pesoInicial: string;
@@ -15,7 +19,4 @@ export class MetaEntity extends BaseEntity{
 
     @Column({type: 'timestamp', default: () => 'CURRENT_TIMESTAMP'})
     fechaMeta: Date;
-
-    @OneToOne(() => ExpedienteEntity, expediente => expediente.meta, {eager: true})
-    expediente: ExpedienteEntity;
 }

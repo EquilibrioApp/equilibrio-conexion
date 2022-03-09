@@ -2,15 +2,22 @@ import { Column, Entity, PrimaryGeneratedColumn, OneToOne, JoinColumn, ManyToMan
 
  //TODO Relacion 1>M
 @Entity()
-export class AvanceEntity extends BaseEntity{
+export class EquivalenciaEntity extends BaseEntity{
     @PrimaryGeneratedColumn('uuid')//'uuid'
     id: string;
 
-    @Column({type: 'timestamp', default: () => 'CURRENT_TIMESTAMP'}) //TODO fecha del dia actual automatico y del expediente ;
-    fecha: Date;
+    @Column({default : ""})
+    nombre:string;
+    
+    @Column({default : ""})
+    grupoAlimencio:string;
+    
+    @Column({default : ""})
+    subgrupo:string;
+    
+    @Column({default : ""})
+    racion : string; 	
 
-    @Column("text")
-    observacion: string;
 }
 /*
  id_avance serial primary key, 

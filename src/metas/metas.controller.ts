@@ -19,12 +19,12 @@ export class MetasController {
     }
 
     @Post()
-    creteMera(@Body() body: any): Promise<MetaEntity> {
+    create(@Body() body: any): Promise<MetaEntity> {
         return this.metaService.create(body);
     }
 
     @Put(':id') 
-    creteAvance(@Param('id') id: string, @Body() body:any) {
+    update(@Param('id') id: string, @Body() body:any) {
         return this.metaService.update(id, body);
     }
 

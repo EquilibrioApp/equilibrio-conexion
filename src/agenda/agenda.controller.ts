@@ -1,6 +1,6 @@
 import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
-import { AgendaDto, AgendaResponseDto } from '../dto/agenda.dto';
-import { AgendaService } from '../services/agenda.service';
+import { AgendaService } from './agenda.service';
+import { AgendaDto, AgendaResponseDto } from './dto/agenda.dto';
 
 @Controller('agenda')
 export class AgendaController {
