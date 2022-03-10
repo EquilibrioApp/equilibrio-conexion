@@ -1,5 +1,5 @@
 import { Body, Controller, Get, Param, Post, UseGuards } from '@nestjs/common';
-import { UsersDto } from './dto/users.dto';
+import { UsersDto, UserResponseDto } from './dto/users.dto';
 import { UsersService } from './users.service';
 import  { JwtAuthGuard } from '../auth/jwt-auth.guard';
 
@@ -9,14 +9,13 @@ export class UsersController {
 
     @Post('/create') //Se crea un nuevo usuario
     //TODO Generar DTO que no regrese contraseña
-    create(@Body() body: UsersDto): Promise<UsersDto> {
-      console.log(body);
+    create(@Body() body: UsersDto): Promise<UserResponseDto> {
       return this.usersService.create(body);
     }
 
     @Get('/:email')//Login mediante el email
     loginByEmail(@Param('email') email:string): Promise<UsersDto> {
-      return this.usersService.find(email);
+      return this.usersService.findByEmail(email);
     }
 
     @UseGuards(JwtAuthGuard)

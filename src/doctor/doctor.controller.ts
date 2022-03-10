@@ -1,4 +1,8 @@
-import { Controller } from '@nestjs/common';
+import { Controller, Get } from '@nestjs/common';
+import { PatientService } from '../patient/patient.service';
 
 @Controller('doctor')
-export class DoctorController {}
+export class DoctorController {
+    
+
+}

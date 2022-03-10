@@ -2,10 +2,10 @@ import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
-import { PatientModule } from '../patient/patient.module';
 import { AuthModule } from '../auth/auth.module';
-import { DoctorModule } from '../doctor/doctor.module';
 import { UsersModule } from 'src/users/users.module';
+import { DoctorModule } from '../doctor/doctor.module';
+import { PatientModule } from '../patient/patient.module';
 
 @Module({
   //Rutas de la application

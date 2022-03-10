@@ -52,3 +52,16 @@ export class UsersDto {
     nutriCodigo?: string;
     
 }
+
+export class UserResponseDto {
+    //TODO Averiguar pipes
+    id?: string;
+    name: string;
+    userType: string;
+    fathersLastName: string;
+    mothersLastName: string;
+    email: string;
+    sex: string;
+    birthDate: Date;
+    phoneNumber: string;
+}

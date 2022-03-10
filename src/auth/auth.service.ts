@@ -16,7 +16,7 @@ export class AuthService {
       //Se itenta obtener el usuario mediante email
     try {
       //En caso de que esto falle, para que no de error se envuelve dentro del try
-      const user = await this.usersService.find(email);
+      const user = await this.usersService.findByEmail(email);
 
       const isPasswordValid = comparePassword(password, user.password);
       console.log(isPasswordValid);
@@ -25,10 +25,10 @@ export class AuthService {
         //Se desestructura el objeto de usuario para no retornar contrasena
         //Nota personal: El atributo que ponemos entre parentesis es el que se quita del objeto final
         const { password, ...result } = user;
-        const token = await this.login(result);
-        console.log({token, result});
+        const token = await this.signToken(result);
+        console.log({...token, result});
         //TODO Hace falta reotrnar el objeto como se expresa en AuthresponseDto
-        return {token, result};
+        return {...token, result};
       }
       //Excepcion en caso de que la contrasena no sea correcta
       throw new UnauthorizedException();
@@ -39,7 +39,7 @@ export class AuthService {
     }
   }
 
-  async login(user:User): Promise<token>{
+  async signToken(user:User): Promise<token>{
     const payload = { 
       id: user.id, 
       name: user.name, 
