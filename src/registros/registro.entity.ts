@@ -3,7 +3,7 @@ import { ExpedienteEntity } from "src/expediente/expediente.entity";
 import { BaseEntity, Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, OneToOne, PrimaryColumn, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
-export class RegistroEntity extends BaseEntity{ //TODO no registra true en booleano 
+export class RegistroEntity extends BaseEntity{  //TODO relacion 
     @PrimaryGeneratedColumn('uuid')//'uuid'
     id: string;
 

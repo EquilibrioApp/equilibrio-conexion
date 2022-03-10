@@ -3,10 +3,13 @@ import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
 import { AgendaModule } from 'src/agenda/agenda.module';
+import { AuthModule } from 'src/auth/auth.module';
+import { DoctorModule } from 'src/doctor/doctor.module';
 import { EquivalenciaModule } from 'src/equivalencia/equivalencia.module';
-import { EquivalenciaService } from 'src/equivalencia/equivalencia.service';
 import { ExpedienteModule } from 'src/expediente/expediente.module';
+import { PatientModule } from 'src/patient/patient.module';
 import { RegistroModule } from 'src/registros/registros.module';
+import { UsersModule } from 'src/users/users.module';
 
 @Module({
   //Rutas de la application
@@ -24,7 +27,9 @@ import { RegistroModule } from 'src/registros/registros.module';
       retryDelay: 3000,
       retryAttempts: 5,
       // dropSchema: true
-    }), AgendaModule, ExpedienteModule, EquivalenciaModule, RegistroModule
+    }), AgendaModule, ExpedienteModule, EquivalenciaModule, RegistroModule,
+        PatientModule, DoctorModule, AuthModule, UsersModule
+  
   ],
   controllers: []
 })

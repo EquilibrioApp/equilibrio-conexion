@@ -31,7 +31,7 @@ export class IndicesService {
     async create( body:any): Promise<IndiceEntity> {
         const indice = new IndiceEntity();
         indice.masaCorporal = this.createIMC(body.peso, body.altura); // IMC=PESO/(ALTURAxAlTURA)
-        indice.masaGrasa = this.createMg(body.cintura, body.cuello, body.cadera, body.altura, body.sexo); // Fórmula Masa Grasa 
+        indice.masaGrasa = this.createMg(body, body.cintura, body.cuello, body.cadera, body.altura, body.sexo, body.edad, body.peso); // Fórmula Masa Grasa 
         indice.masaMagra = this.createMm(body.peso, body.altura, body.sexo); // Masa corporal magra
         indice.masaOsea = this.createMo(body.altura, body.biestiloideo, body.femoral); // Masa ósea 
         indice.masaResidual = this.createMr(body.peso, body.sexo); // Masa residual
@@ -47,19 +47,22 @@ export class IndicesService {
             return IMC;
         }
 
-        createMg(cintura: number, cuello: number, cadera:number, altura:number, sexo:string){
+        createMg(body:any, cintura: number, cuello: number, cadera:number, altura:number, sexo:string, edad:number, peso:number){
+            const IMC = this.createIMC(body.peso, body.altura);
             if (sexo == 'M') {
                 // Fórmula Masa Grasa Hombres (%): 495 / {1.0324 - 0.19077 [longitud (cintura- cuello)] + 0.15456 [altura]}-450
                 var mg = 495/(1.0324-(0.19077*Math.log(cintura-cuello))+(0.15456*altura));
                 // mg =  495/(1.0324-(0.19077*Math.log(cintura-cuello))+(0.15456*(altura)))-450;
             }else{
                 //  495 / {1.29579 - 0.35004 [longitud (cintura+caderas-cuello)] + 0.22100 [altura]}. - 450
-                var mg = 495/(1.29579-(0.35004*(Math.log(cadera+cintura-cuello)))+(0.221*(altura))); //TODO Masa grasa
+                var mg = (1.2*IMC)+(0.23*edad)-5.4
+                // 495/(1.29579-0.35004*(Math.log(cadera+cintura-cuello))+(0.221*(altura))); 
                 // var mg = 495/(1.29579-(0.35004*Math.log(cadera+cintura-cuello))+(0.221*Math.log(altura)));  
                 //495 / (1.29579- (0.35004*longitud) + (0.22100 * Math.log(altura))) - 450;
                 // https://calcuonline.com/calculadoras/calculadora-grasa-corporal/
             }
-            return mg;
+            var mgK = peso*(mg/100);
+            return mgK;
         }
 
         createMm(peso:number, altura:number, sexo:string){
@@ -76,7 +79,7 @@ export class IndicesService {
 
         createMo(altura:number, biestiloideo:number, femoral:number){ //TODO 
             //Formula = 3.02*(estatura2* diámetro biestiloideo * diámetro femoral * 400) 0.712
-            var mo = 3.02 * Math.pow(((Math.pow((altura/100),2))*(biestiloideo)*(femoral)*400),0.712)/1000;
+            var mo = 3.02 * Math.pow(((Math.pow((altura/100),2))*(biestiloideo/100)*(femoral/100)*400),0.712);
             return mo;
         }
 
@@ -104,3 +107,7 @@ export class IndicesService {
         return this.indiceRepo.remove(item);
     }
 }
+
+
+//Fuente:
+// https://www.calculartodo.com/salud/indice-de-masa-grasa.php
