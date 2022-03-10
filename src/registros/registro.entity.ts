@@ -26,13 +26,13 @@ export class RegistroEntity extends BaseEntity{ //TODO no registra true en boole
     @Column() 
     questionThree: number;
 
-    @Column() 
+    @Column({default : null}) 
     questionFour: boolean;
 
-    @Column() 
+    @Column({default : null}) 
     questionFive: boolean;
 
-    @Column() 
+    @Column({default : null}) 
     questionSix: boolean;
 
     @Column() 

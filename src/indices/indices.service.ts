@@ -1,13 +1,17 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { kMaxLength } from 'buffer';
+import { CircunferenciaEntity } from 'src/circunferencias/circunferencia.entity';
+import { PesoEntity } from 'src/pesos/peso.entity';
 import  {  Repository  }  from  'typeorm' ;
 import { IndiceEntity } from './indice.entity';
 
 @Injectable()
 export class IndicesService {
     constructor(
-        @InjectRepository(IndiceEntity)private readonly indiceEntity:Repository<IndiceEntity>,
+        @InjectRepository(IndiceEntity)private readonly indiceRepo:Repository<IndiceEntity>,
+        @InjectRepository(CircunferenciaEntity)private readonly cirRepo:Repository<CircunferenciaEntity>,
+        @InjectRepository(PesoEntity)private readonly pesoRepo:Repository<PesoEntity>,
     ){}
     
     // async create(exp: Partial<IndiceEntity>): Promise<IndiceEntity> {
@@ -15,11 +19,11 @@ export class IndicesService {
     //     return this.indiceEntity.save(item);
     // }
     async find(){
-        return this.indiceEntity.find();
+        return this.indiceRepo.find();
     }
 
     async findOne( id : string){
-        const item = await this.indiceEntity.findOne(id);
+        const item = await this.indiceRepo.findOne(id);
         if(!item) throw new NotFoundException();
         return item;
     }
@@ -34,8 +38,8 @@ export class IndicesService {
         // Masa muscular (kg)=peso-(masa grasa + masa ósea + masa residual)
         indice.masaMuscular = (body.peso - (indice.masaGrasa + indice.masaOsea + indice.masaResidual));
 
-        const item = this.indiceEntity.create(indice);
-        return this.indiceEntity.save(item);
+        const item = this.indiceRepo.create(indice);
+        return this.indiceRepo.save(item);
     }
 
         createIMC(peso: number, altura: number){
@@ -92,11 +96,11 @@ export class IndicesService {
 
     async update(id: string, exp: Partial<IndiceEntity>): Promise<IndiceEntity> {
         const item = await this.findOne(id);
-        return this.indiceEntity.save({...item, ...exp});
+        return this.indiceRepo.save({...item, ...exp});
     }
 
     async remove(id: string): Promise<IndiceEntity> {
         const item = await this.findOne(id);
-        return this.indiceEntity.remove(item);
+        return this.indiceRepo.remove(item);
     }
 }
